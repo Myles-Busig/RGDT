@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "Inventory System (Color Game)"
+	var LibraryId = 0x5a4961cf671a30e9
+	var SourceControlType = ""
+	var ReadOnly = false
+}

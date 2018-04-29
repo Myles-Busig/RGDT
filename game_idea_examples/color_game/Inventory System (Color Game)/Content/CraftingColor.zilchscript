@@ -1,0 +1,16 @@
+class CraftingColor : ZilchComponent
+{
+    [Property] var Color : Real4 = Real4(1.0, 1.0, 1.0, 1.0);
+    
+    function Initialize(init : CogInitializer)
+    {
+        this.Owner.Sprite.VertexColor = this.Color;
+        
+        Zero.Connect(this.Owner, Events.LeftMouseDown, this.OnLeftMouseDown);
+    }
+    
+    function OnLeftMouseDown(event : ViewportMouseEvent)
+    {
+        this.LevelSettings.Crafting.SelectedColor = this.Color;
+    }
+}
