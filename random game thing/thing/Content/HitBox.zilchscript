@@ -1,0 +1,16 @@
+class HitBox : ZilchComponent
+{
+    var FromPlayer : Boolean = false;
+    var Damage : Real = 0.0;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+    }
+
+    function OnCollisionStarted(event : CollisionEvent)
+    {
+        //if (this.FromPlayer == true && event.OtherObject.Name == "EntityEnemy")
+          //  event.OtherObject
+    }
+}

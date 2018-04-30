@@ -80,7 +80,7 @@ Level
 		var Name = "EditorCamera"
 		Transform 
 		{
-			var Translation = Real3{2.05263495, 0.789861202, 20}
+			var Translation = Real3{-5.77086782, 2.94123507, 20}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, -1.09278471e-08, 0, 1}
 		}
@@ -133,7 +133,7 @@ Level
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 18.0967636
+			var Size = 14.8163795
 		}
 		EditorCameraController 
 		{
@@ -142,7 +142,7 @@ Level
 			var LookDistance = 20
 			var VerticalAngle = 0
 			var HorizontalAngle = 0
-			var LookTarget = Real3{2.05263495, 0.789861202, 8.97235211e-08}
+			var LookTarget = Real3{-5.77086782, 2.94123507, -2.52252704e-07}
 			var MoveSensitivity = 1
 		}
 	}
@@ -2631,7 +2631,7 @@ Level
 				{
 					Cog [Id:0x5a4a533ea44e24fd][ContextId:72]
 					{
-						var Name = "CraftingColor1"
+						var Name = "CraftingColor2"
 						Transform 
 						{
 							var Translation = Real3{-5.5, 3, 0}
@@ -2663,12 +2663,111 @@ Level
 						}
 						CraftingColor 
 						{
-							var Color = Real4{1, 1, 1, 1}
+							var Color = Real4{1, 0, 0, 1}
+						}
+						Hierarchy 
+						{
+							Cog [Id:0x5a4b03b41553821b][ContextId:73]
+							{
+								var Name = "CraftingAmount2"
+								Transform 
+								{
+									var Translation = Real3{-1, 0, 0}
+									var Scale = Real3{1, 1, 1}
+									var Rotation = Quaternion{0, 0, 0, 1}
+								}
+								SpriteText 
+								{
+									var Visible = true
+									var ViewCulling = true
+									var VisibilityEvents = true
+									var OverrideBoundingBox = false
+									var LocalAabbCenter = Real3{0, 0, 0}
+									var LocalAabbHalfExtents = Real3{1, 1, 1}
+									var GroupSortValue = 0
+									var Material = "582c575af53d18c9:AlphaSprite"
+									var VertexColor = Real4{1, 1, 1, 1}
+									var GeometryMode = SpriteGeometryMode.ZPlane
+									var Text = "0"
+									var Font = "57343753bb4eaaec:NotoSans-Regular"
+									var FontSize = 64
+									var PixelsPerUnit = 128
+									var TextAlign = TextAlign.Center
+								}
+							}
 						}
 					}
-					Cog [Id:0x5a4a533ea44e2549][ContextId:73]
+					Cog [Id:0x5a4b0dea2897d386][ContextId:74]
 					{
-						var Name = "CraftingColor2"
+						var Name = "CraftingColor1"
+						Transform 
+						{
+							var Translation = Real3{-7.5, 3, 0}
+							var Scale = Real3{1, 1, 1}
+							var Rotation = Quaternion{0, 0, 0, 1}
+						}
+						Sprite 
+						{
+							var Visible = true
+							var ViewCulling = true
+							var VisibilityEvents = true
+							var OverrideBoundingBox = false
+							var LocalAabbCenter = Real3{0, 0, 0}
+							var LocalAabbHalfExtents = Real3{1, 1, 1}
+							var GroupSortValue = 0
+							var Material = "582c575af53d18c9:AlphaSprite"
+							var VertexColor = Real4{1, 1, 1, 1}
+							var GeometryMode = SpriteGeometryMode.ZPlane
+							var SpriteSource = "5275aa4d802dd6dc:Square"
+							var FlipX = false
+							var FlipY = false
+							var AnimationActive = true
+							var AnimationSpeed = 1
+							var StartFrame = 0
+						}
+						Reactive 
+						{
+							var Active = true
+						}
+						CraftingColor 
+						{
+							var Color = Real4{1, 1, 1, 1}
+						}
+						Hierarchy 
+						{
+							Cog [Id:0x5a4b039318317c61][ContextId:75]
+							{
+								var Name = "CraftingAmount1"
+								Transform 
+								{
+									var Translation = Real3{-1, 0, 0}
+									var Scale = Real3{1, 1, 1}
+									var Rotation = Quaternion{0, 0, 0, 1}
+								}
+								SpriteText 
+								{
+									var Visible = true
+									var ViewCulling = true
+									var VisibilityEvents = true
+									var OverrideBoundingBox = false
+									var LocalAabbCenter = Real3{0, 0, 0}
+									var LocalAabbHalfExtents = Real3{1, 1, 1}
+									var GroupSortValue = 0
+									var Material = "582c575af53d18c9:AlphaSprite"
+									var VertexColor = Real4{1, 1, 1, 1}
+									var GeometryMode = SpriteGeometryMode.ZPlane
+									var Text = "∞"
+									var Font = "57343753bb4eaaec:NotoSans-Regular"
+									var FontSize = 96
+									var PixelsPerUnit = 128
+									var TextAlign = TextAlign.Center
+								}
+							}
+						}
+					}
+					Cog [Id:0x5a4a533ea44e2549][ContextId:76]
+					{
+						var Name = "CraftingColor4"
 						Transform 
 						{
 							var Translation = Real3{-5.5, 1.5, 0}
@@ -2700,12 +2799,111 @@ Level
 						}
 						CraftingColor 
 						{
-							var Color = Real4{1, 0, 0, 1}
+							var Color = Real4{1, 1, 0, 1}
+						}
+						Hierarchy 
+						{
+							Cog [Id:0x5a4b03b0158e4d5c][ContextId:77]
+							{
+								var Name = "CraftingAmount4"
+								Transform 
+								{
+									var Translation = Real3{-1, 0, 0}
+									var Scale = Real3{1, 1, 1}
+									var Rotation = Quaternion{0, 0, 0, 1}
+								}
+								SpriteText 
+								{
+									var Visible = true
+									var ViewCulling = true
+									var VisibilityEvents = true
+									var OverrideBoundingBox = false
+									var LocalAabbCenter = Real3{0, 0, 0}
+									var LocalAabbHalfExtents = Real3{1, 1, 1}
+									var GroupSortValue = 0
+									var Material = "582c575af53d18c9:AlphaSprite"
+									var VertexColor = Real4{1, 1, 1, 1}
+									var GeometryMode = SpriteGeometryMode.ZPlane
+									var Text = "0"
+									var Font = "57343753bb4eaaec:NotoSans-Regular"
+									var FontSize = 64
+									var PixelsPerUnit = 128
+									var TextAlign = TextAlign.Center
+								}
+							}
 						}
 					}
-					Cog [Id:0x5a4a533ea44e258a][ContextId:74]
+					Cog [Id:0x5a4b0dea2897d3ec][ContextId:78]
 					{
 						var Name = "CraftingColor3"
+						Transform 
+						{
+							var Translation = Real3{-7.5, 1.5, 0}
+							var Scale = Real3{1, 1, 1}
+							var Rotation = Quaternion{0, 0, 0, 1}
+						}
+						Sprite 
+						{
+							var Visible = true
+							var ViewCulling = true
+							var VisibilityEvents = true
+							var OverrideBoundingBox = false
+							var LocalAabbCenter = Real3{0, 0, 0}
+							var LocalAabbHalfExtents = Real3{1, 1, 1}
+							var GroupSortValue = 0
+							var Material = "582c575af53d18c9:AlphaSprite"
+							var VertexColor = Real4{1, 1, 1, 1}
+							var GeometryMode = SpriteGeometryMode.ZPlane
+							var SpriteSource = "5275aa4d802dd6dc:Square"
+							var FlipX = false
+							var FlipY = false
+							var AnimationActive = true
+							var AnimationSpeed = 1
+							var StartFrame = 0
+						}
+						Reactive 
+						{
+							var Active = true
+						}
+						CraftingColor 
+						{
+							var Color = Real4{0, 0, 1, 1}
+						}
+						Hierarchy 
+						{
+							Cog [Id:0x5a4b03ae19637742][ContextId:79]
+							{
+								var Name = "CraftingAmount3"
+								Transform 
+								{
+									var Translation = Real3{-1, 0, 0}
+									var Scale = Real3{1, 1, 1}
+									var Rotation = Quaternion{0, 0, 0, 1}
+								}
+								SpriteText 
+								{
+									var Visible = true
+									var ViewCulling = true
+									var VisibilityEvents = true
+									var OverrideBoundingBox = false
+									var LocalAabbCenter = Real3{0, 0, 0}
+									var LocalAabbHalfExtents = Real3{1, 1, 1}
+									var GroupSortValue = 0
+									var Material = "582c575af53d18c9:AlphaSprite"
+									var VertexColor = Real4{1, 1, 1, 1}
+									var GeometryMode = SpriteGeometryMode.ZPlane
+									var Text = "0"
+									var Font = "57343753bb4eaaec:NotoSans-Regular"
+									var FontSize = 64
+									var PixelsPerUnit = 128
+									var TextAlign = TextAlign.Center
+								}
+							}
+						}
+					}
+					Cog [Id:0x5a4a533ea44e258a][ContextId:80]
+					{
+						var Name = "CraftingColor6"
 						Transform 
 						{
 							var Translation = Real3{-5.5, 1.1920929e-07, 0}
@@ -2737,12 +2935,111 @@ Level
 						}
 						CraftingColor 
 						{
-							var Color = Real4{0, 0, 1, 1}
+							var Color = Real4{0, 1, 0, 1}
+						}
+						Hierarchy 
+						{
+							Cog [Id:0x5a4b03cd16f3b24c][ContextId:81]
+							{
+								var Name = "CraftingAmount6"
+								Transform 
+								{
+									var Translation = Real3{-1, 0, 0}
+									var Scale = Real3{1, 1, 1}
+									var Rotation = Quaternion{0, 0, 0, 1}
+								}
+								SpriteText 
+								{
+									var Visible = true
+									var ViewCulling = true
+									var VisibilityEvents = true
+									var OverrideBoundingBox = false
+									var LocalAabbCenter = Real3{0, 0, 0}
+									var LocalAabbHalfExtents = Real3{1, 1, 1}
+									var GroupSortValue = 0
+									var Material = "582c575af53d18c9:AlphaSprite"
+									var VertexColor = Real4{1, 1, 1, 1}
+									var GeometryMode = SpriteGeometryMode.ZPlane
+									var Text = "0"
+									var Font = "57343753bb4eaaec:NotoSans-Regular"
+									var FontSize = 64
+									var PixelsPerUnit = 128
+									var TextAlign = TextAlign.Center
+								}
+							}
 						}
 					}
-					Cog [Id:0x5a4a533ea44e25ca][ContextId:75]
+					Cog [Id:0x5a4b0dea2897d44c][ContextId:82]
 					{
-						var Name = "CraftingColor4"
+						var Name = "CraftingColor5"
+						Transform 
+						{
+							var Translation = Real3{-7.5, 1.1920929e-07, 0}
+							var Scale = Real3{1, 1, 1}
+							var Rotation = Quaternion{0, 0, 0, 1}
+						}
+						Sprite 
+						{
+							var Visible = true
+							var ViewCulling = true
+							var VisibilityEvents = true
+							var OverrideBoundingBox = false
+							var LocalAabbCenter = Real3{0, 0, 0}
+							var LocalAabbHalfExtents = Real3{1, 1, 1}
+							var GroupSortValue = 0
+							var Material = "582c575af53d18c9:AlphaSprite"
+							var VertexColor = Real4{1, 1, 1, 1}
+							var GeometryMode = SpriteGeometryMode.ZPlane
+							var SpriteSource = "5275aa4d802dd6dc:Square"
+							var FlipX = false
+							var FlipY = false
+							var AnimationActive = true
+							var AnimationSpeed = 1
+							var StartFrame = 0
+						}
+						Reactive 
+						{
+							var Active = true
+						}
+						CraftingColor 
+						{
+							var Color = Real4{1, 0.498039246, 0, 1}
+						}
+						Hierarchy 
+						{
+							Cog [Id:0x5a4b03a51a5aa5b7][ContextId:83]
+							{
+								var Name = "CraftingAmount5"
+								Transform 
+								{
+									var Translation = Real3{-1, 0, 0}
+									var Scale = Real3{1, 1, 1}
+									var Rotation = Quaternion{0, 0, 0, 1}
+								}
+								SpriteText 
+								{
+									var Visible = true
+									var ViewCulling = true
+									var VisibilityEvents = true
+									var OverrideBoundingBox = false
+									var LocalAabbCenter = Real3{0, 0, 0}
+									var LocalAabbHalfExtents = Real3{1, 1, 1}
+									var GroupSortValue = 0
+									var Material = "582c575af53d18c9:AlphaSprite"
+									var VertexColor = Real4{1, 1, 1, 1}
+									var GeometryMode = SpriteGeometryMode.ZPlane
+									var Text = "0"
+									var Font = "57343753bb4eaaec:NotoSans-Regular"
+									var FontSize = 64
+									var PixelsPerUnit = 128
+									var TextAlign = TextAlign.Center
+								}
+							}
+						}
+					}
+					Cog [Id:0x5a4a533ea44e25ca][ContextId:84]
+					{
+						var Name = "CraftingColor8"
 						Transform 
 						{
 							var Translation = Real3{-5.5, -1.5, 0}
@@ -2774,12 +3071,111 @@ Level
 						}
 						CraftingColor 
 						{
-							var Color = Real4{0, 1, 0, 1}
+							var Color = Real4{0, 1, 1, 1}
+						}
+						Hierarchy 
+						{
+							Cog [Id:0x5a4b03ce17748e0c][ContextId:85]
+							{
+								var Name = "CraftingAmount8"
+								Transform 
+								{
+									var Translation = Real3{-1, 1.1920929e-07, 0}
+									var Scale = Real3{1, 1, 1}
+									var Rotation = Quaternion{0, 0, 0, 1}
+								}
+								SpriteText 
+								{
+									var Visible = true
+									var ViewCulling = true
+									var VisibilityEvents = true
+									var OverrideBoundingBox = false
+									var LocalAabbCenter = Real3{0, 0, 0}
+									var LocalAabbHalfExtents = Real3{1, 1, 1}
+									var GroupSortValue = 0
+									var Material = "582c575af53d18c9:AlphaSprite"
+									var VertexColor = Real4{1, 1, 1, 1}
+									var GeometryMode = SpriteGeometryMode.ZPlane
+									var Text = "0"
+									var Font = "57343753bb4eaaec:NotoSans-Regular"
+									var FontSize = 64
+									var PixelsPerUnit = 128
+									var TextAlign = TextAlign.Center
+								}
+							}
 						}
 					}
-					Cog [Id:0x5a4a533ea44e2609][ContextId:76]
+					Cog [Id:0x5a4b0dea2897d4aa][ContextId:86]
 					{
-						var Name = "CraftingColor5"
+						var Name = "CraftingColor7"
+						Transform 
+						{
+							var Translation = Real3{-7.5, -1.5, 0}
+							var Scale = Real3{1, 1, 1}
+							var Rotation = Quaternion{0, 0, 0, 1}
+						}
+						Sprite 
+						{
+							var Visible = true
+							var ViewCulling = true
+							var VisibilityEvents = true
+							var OverrideBoundingBox = false
+							var LocalAabbCenter = Real3{0, 0, 0}
+							var LocalAabbHalfExtents = Real3{1, 1, 1}
+							var GroupSortValue = 0
+							var Material = "582c575af53d18c9:AlphaSprite"
+							var VertexColor = Real4{1, 1, 1, 1}
+							var GeometryMode = SpriteGeometryMode.ZPlane
+							var SpriteSource = "5275aa4d802dd6dc:Square"
+							var FlipX = false
+							var FlipY = false
+							var AnimationActive = true
+							var AnimationSpeed = 1
+							var StartFrame = 0
+						}
+						Reactive 
+						{
+							var Active = true
+						}
+						CraftingColor 
+						{
+							var Color = Real4{0.498039246, 0, 1, 1}
+						}
+						Hierarchy 
+						{
+							Cog [Id:0x5a4b03a31b5845e4][ContextId:87]
+							{
+								var Name = "CraftingAmount7"
+								Transform 
+								{
+									var Translation = Real3{-1, 1.1920929e-07, 0}
+									var Scale = Real3{1, 1, 1}
+									var Rotation = Quaternion{0, 0, 0, 1}
+								}
+								SpriteText 
+								{
+									var Visible = true
+									var ViewCulling = true
+									var VisibilityEvents = true
+									var OverrideBoundingBox = false
+									var LocalAabbCenter = Real3{0, 0, 0}
+									var LocalAabbHalfExtents = Real3{1, 1, 1}
+									var GroupSortValue = 0
+									var Material = "582c575af53d18c9:AlphaSprite"
+									var VertexColor = Real4{1, 1, 1, 1}
+									var GeometryMode = SpriteGeometryMode.ZPlane
+									var Text = "0"
+									var Font = "57343753bb4eaaec:NotoSans-Regular"
+									var FontSize = 64
+									var PixelsPerUnit = 128
+									var TextAlign = TextAlign.Center
+								}
+							}
+						}
+					}
+					Cog [Id:0x5a4a533ea44e2609][ContextId:88]
+					{
+						var Name = "CraftingColor10"
 						Transform 
 						{
 							var Translation = Real3{-5.5, -3, 0}
@@ -2811,12 +3207,111 @@ Level
 						}
 						CraftingColor 
 						{
-							var Color = Real4{1, 1, 0, 1}
+							var Color = Real4{0.498039126, 1, 0.250980377, 1}
+						}
+						Hierarchy 
+						{
+							Cog [Id:0x5a4b03b9143a91f3][ContextId:89]
+							{
+								var Name = "CraftingAmount10"
+								Transform 
+								{
+									var Translation = Real3{-1, 0, 0}
+									var Scale = Real3{1, 1, 1}
+									var Rotation = Quaternion{0, 0, 0, 1}
+								}
+								SpriteText 
+								{
+									var Visible = true
+									var ViewCulling = true
+									var VisibilityEvents = true
+									var OverrideBoundingBox = false
+									var LocalAabbCenter = Real3{0, 0, 0}
+									var LocalAabbHalfExtents = Real3{1, 1, 1}
+									var GroupSortValue = 0
+									var Material = "582c575af53d18c9:AlphaSprite"
+									var VertexColor = Real4{1, 1, 1, 1}
+									var GeometryMode = SpriteGeometryMode.ZPlane
+									var Text = "0"
+									var Font = "57343753bb4eaaec:NotoSans-Regular"
+									var FontSize = 64
+									var PixelsPerUnit = 128
+									var TextAlign = TextAlign.Center
+								}
+							}
+						}
+					}
+					Cog [Id:0x5a4b0dea2897d50c][ContextId:90]
+					{
+						var Name = "CraftingColor9"
+						Transform 
+						{
+							var Translation = Real3{-7.5, -3, 0}
+							var Scale = Real3{1, 1, 1}
+							var Rotation = Quaternion{0, 0, 0, 1}
+						}
+						Sprite 
+						{
+							var Visible = true
+							var ViewCulling = true
+							var VisibilityEvents = true
+							var OverrideBoundingBox = false
+							var LocalAabbCenter = Real3{0, 0, 0}
+							var LocalAabbHalfExtents = Real3{1, 1, 1}
+							var GroupSortValue = 0
+							var Material = "582c575af53d18c9:AlphaSprite"
+							var VertexColor = Real4{1, 1, 1, 1}
+							var GeometryMode = SpriteGeometryMode.ZPlane
+							var SpriteSource = "5275aa4d802dd6dc:Square"
+							var FlipX = false
+							var FlipY = false
+							var AnimationActive = true
+							var AnimationSpeed = 1
+							var StartFrame = 0
+						}
+						Reactive 
+						{
+							var Active = true
+						}
+						CraftingColor 
+						{
+							var Color = Real4{1, 0, 1, 1}
+						}
+						Hierarchy 
+						{
+							Cog [Id:0x5a4b03bd1be2c980][ContextId:91]
+							{
+								var Name = "CraftingAmount9"
+								Transform 
+								{
+									var Translation = Real3{-1, 0, 0}
+									var Scale = Real3{1, 1, 1}
+									var Rotation = Quaternion{0, 0, 0, 1}
+								}
+								SpriteText 
+								{
+									var Visible = true
+									var ViewCulling = true
+									var VisibilityEvents = true
+									var OverrideBoundingBox = false
+									var LocalAabbCenter = Real3{0, 0, 0}
+									var LocalAabbHalfExtents = Real3{1, 1, 1}
+									var GroupSortValue = 0
+									var Material = "582c575af53d18c9:AlphaSprite"
+									var VertexColor = Real4{1, 1, 1, 1}
+									var GeometryMode = SpriteGeometryMode.ZPlane
+									var Text = "0"
+									var Font = "57343753bb4eaaec:NotoSans-Regular"
+									var FontSize = 64
+									var PixelsPerUnit = 128
+									var TextAlign = TextAlign.Center
+								}
+							}
 						}
 					}
 				}
 			}
-			Cog [Id:0x5a4a377660bd86b9][ContextId:77]
+			Cog [Id:0x5a4a377660bd86b9][ContextId:92]
 			{
 				var Name = "CraftingOutput"
 				Transform 
@@ -2847,7 +3342,7 @@ Level
 			}
 		}
 	}
-	Cog [ContextId:78]
+	Cog [ContextId:93]
 	{
 		var Name = "Sprite"
 		Transform 
@@ -2876,7 +3371,7 @@ Level
 			var StartFrame = 0
 		}
 	}
-	Cog [ContextId:79]
+	Cog [ContextId:94]
 	{
 		var Name = "Sprite"
 		Transform 
@@ -2905,7 +3400,7 @@ Level
 			var StartFrame = 0
 		}
 	}
-	Cog [ContextId:80]
+	Cog [ContextId:95]
 	{
 		var Name = "Sprite"
 		Transform 
@@ -2934,7 +3429,7 @@ Level
 			var StartFrame = 0
 		}
 	}
-	Cog [ContextId:81]
+	Cog [ContextId:96]
 	{
 		var Name = "Sprite"
 		Transform 
@@ -2963,7 +3458,7 @@ Level
 			var StartFrame = 0
 		}
 	}
-	Cog [ContextId:82]
+	Cog [ContextId:97]
 	{
 		var Name = "Sprite"
 		Transform 
@@ -2992,7 +3487,7 @@ Level
 			var StartFrame = 0
 		}
 	}
-	Cog [ContextId:83]
+	Cog [ContextId:98]
 	{
 		var Name = "Sprite"
 		Transform 
