@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "ShootToJumpDemo"
+	var LibraryId = 0x5afd743c8eb13868
+	var SourceControlType = ""
+	var ReadOnly = false
+}
