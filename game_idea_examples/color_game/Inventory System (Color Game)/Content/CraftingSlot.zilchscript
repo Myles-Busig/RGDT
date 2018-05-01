@@ -17,7 +17,7 @@ class CraftingSlot : ZilchComponent
         {
             var selectedColor = this.LevelSettings.Crafting.SelectedColor;
             
-            for (var i = 0; i < 5; ++i)
+            for (var i = 0; i < 10; ++i)
             {
                 if (selectedColor == this.Space.FindObjectByName("CraftingColor`i + 1`").Sprite.VertexColor)
                 {
