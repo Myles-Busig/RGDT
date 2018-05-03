@@ -1,0 +1,16 @@
+class CraftingOutput : ZilchComponent
+{
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Owner, Events.MouseUpdate, this.OnMouseHover);
+    }
+
+    function OnMouseHover(event : ViewportMouseEvent)
+    {
+        if (Zero.Mouse.IsButtonDown(MouseButtons.Left))
+        {
+            this.LevelSettings.Crafting.CraftingConfirmed = true;
+            Console.WriteLine("Click On Output");
+        }
+    }
+}

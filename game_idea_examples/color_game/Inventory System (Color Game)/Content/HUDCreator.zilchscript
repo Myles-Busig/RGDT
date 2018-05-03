@@ -1,0 +1,14 @@
+class HUDCreator : ZilchComponent
+{
+    [Property] var HUDLevel : Level;
+    [Property] var SpaceArchetype : Archetype;
+    
+    var HUDSpace : Space = null;
+    
+    function Initialize(init : CogInitializer)
+    {
+        this.HUDSpace = this.GameSession.CreateNamedSpace("HUDSpace", this.SpaceArchetype);
+        
+        this.HUDSpace.LoadLevel(this.HUDLevel);
+    }
+}

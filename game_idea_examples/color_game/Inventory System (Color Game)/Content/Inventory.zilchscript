@@ -1,0 +1,120 @@
+class Inventory : ZilchComponent
+{
+    var Inventory : Array[Integer] = new Array[Integer]();
+    var InventoryCount : Array[Integer] = new Array[Integer]();
+    
+    var GiveData : Array[Integer] = new Array[Integer]();
+    
+    function Initialize(init : CogInitializer)
+    {
+        for (var i = 0; i < 5; ++i)
+        {
+            this.Inventory.Add(0);
+            this.InventoryCount.Add(0);
+        }
+        
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if (Zero.Keyboard.KeyIsPressed(Keys.Space))
+        {
+            Console.WriteLine("");
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("Inventory: `this.Inventory`");
+            Console.WriteLine("Count: `this.InventoryCount`");
+            Console.WriteLine("Color Count: `this.LevelSettings.Crafting.ColorAmounts`");
+            Console.WriteLine("--------------------------------------------------");
+        }
+        
+        if (Zero.Keyboard.KeyIsPressed(Keys.One))
+            this.GiveItems(1, 2);
+        if (Zero.Keyboard.KeyIsPressed(Keys.Two))
+            this.GiveItems(2, 2);
+        if (Zero.Keyboard.KeyIsPressed(Keys.Three))
+            this.GiveItems(3, 2);
+        if (Zero.Keyboard.KeyIsPressed(Keys.Four))
+            this.GiveItems(4, 2);
+        if (Zero.Keyboard.KeyIsPressed(Keys.Five))
+            this.GiveItems(5, 2);
+        if (Zero.Keyboard.KeyIsPressed(Keys.Six))
+            this.GiveItems(6, 2);
+        
+        if (Zero.Keyboard.KeyIsPressed(Keys.Backslash))
+        {
+            Console.WriteLine("");
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("Give Data:");
+            if (this.GiveData.Count == 0)
+            {
+                Console.WriteLine("ERROR!");
+                Console.WriteLine("NO GIVE DATA AVAILIBLE!");
+            }
+            else
+            {
+                if (this.GiveData[2] == -1)
+                {
+                    Console.WriteLine("Item was not given, no availible slots");
+                    Console.WriteLine("Attempted ID: `this.GiveData[0]`");
+                    Console.WriteLine("Attempted amount: `this.GiveData[1]`");
+                }
+                else
+                {
+                    Console.WriteLine("Item ID: `this.GiveData[0]`");
+                    Console.WriteLine("Item amount: `this.GiveData[1]`");
+                    if (this.GiveData[2] == 0)
+                        Console.WriteLine("Given through method: Add to existing slot");
+                    else
+                        Console.WriteLine("Given through method: Add to empty slot");
+                    Console.WriteLine("Given to slot: `this.GiveData[3]`");
+                }
+            }
+            Console.WriteLine("--------------------------------------------------");
+        }
+    }
+    
+    function GiveItems(id : Integer, amount : Integer)
+    {
+        Console.WriteLine("Attempting to give player item(s) with ID '`id`' and amount '`amount`'...");
+        
+        for (var i = 0; i < 5; ++i)
+        {
+            if (this.Inventory[i] == id)
+            {
+                Console.WriteLine("Succesfully gave player item(s) with ID '`id`' and amount '`amount`'! (press '\\' for more info)");
+                this.GiveData.Clear();
+                this.GiveData.Add(id);
+                this.GiveData.Add(amount);
+                this.GiveData.Add(0);
+                this.GiveData.Add(i);
+                
+                this.InventoryCount[i] += amount;
+                return;
+            }
+        }
+        
+        for (var i = 0; i < 5; ++i)
+        {
+            if (this.Inventory[i] == 0)
+            {
+                Console.WriteLine("Succesfully gave player item(s) with ID '`id`' and amount '`amount`'! (press '\\' for more info)");
+                this.GiveData.Clear();
+                this.GiveData.Add(id);
+                this.GiveData.Add(amount);
+                this.GiveData.Add(1);
+                this.GiveData.Add(i);
+                
+                this.Inventory[i] = id;
+                this.InventoryCount[i] = amount;
+                return;
+            }
+        }
+        
+        Console.WriteLine("Failed to give player item(s) with ID '`id`' and amount '`amount`', no availible inventory slots");
+        this.GiveData.Clear();
+        this.GiveData.Add(id);
+        this.GiveData.Add(amount);
+        this.GiveData.Add(-1);
+    }
+}

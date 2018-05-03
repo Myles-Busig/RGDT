@@ -5,6 +5,7 @@ class Recipe
 
 class Crafting : ZilchComponent
 {
+    var CraftingConfirmed : Boolean = false;
     var CurrentCraftingLayout : Array[Integer] = new Array[Integer]();
     
     var SelectedColor : Real4 = Real4(1.0, 1.0, 1.0, 1.0);
@@ -19,9 +20,7 @@ class Crafting : ZilchComponent
         
         for (var i = 0; i < 9; ++i)
         {
-            this.ColorAmounts.Add(34);
-            
-            Console.WriteLine("`i`");
+            this.ColorAmounts.Add(100);
             
             this.Space.FindObjectByName("CraftingAmount`i + 1`").SpriteText.VertexColor = 
                 this.Space.FindObjectByName("CraftingColor`i + 1`").Sprite.VertexColor;
@@ -32,28 +31,40 @@ class Crafting : ZilchComponent
 
     function OnLogicUpdate(event : UpdateEvent)
     {
-        this.GetCraftingLayout();
+        this.GetClearCraftingLayout(false);
         
         for (var i = 0; i < 9; ++i)
             this.Space.FindObjectByName("CraftingAmount`i + 2`").SpriteText.Text = "`this.ColorAmounts[i]`";
         
-        if (Zero.Keyboard.KeyIsPressed(Keys.Space))
-            Console.WriteLine("Color Amounts: `this.ColorAmounts`");
+        /*if (Zero.Keyboard.KeyIsPressed(Keys.Space))
+            Console.WriteLine("Color Amounts: `this.ColorAmounts`");*/
         
-        if (this.CheckForRecipe("TestThing1"))
-            this.Space.FindObjectByName("CraftingOutput").Sprite.VertexColor = Real4(1.0, 0.75, 0.0, 1.0);
-        else if (this.CheckForRecipe("TestThing2"))
-            this.Space.FindObjectByName("CraftingOutput").Sprite.VertexColor = Real4(0.0, 1.0, 0.75, 1.0);
-        else
-            this.Space.FindObjectByName("CraftingOutput").Sprite.VertexColor = Real4(1.0, 1.0, 1.0, 1.0);
+        if (Zero.Keyboard.KeyIsPressed(Keys.Enter))
+            this.CraftingConfirmed = true;
+        
+        this.CheckAllRecipes();
     }
     
-    function GetCraftingLayout()
+    function GetClearCraftingLayout(clear : Boolean)
     {
         this.CurrentCraftingLayout.Clear();
         
-        for(var i = 0; i < 64; ++i)
-            this.CurrentCraftingLayout.Add(this.Space.FindObjectByName("CraftingSlot`i + 1`").CraftingSlot.Data);
+        if (clear)
+        {
+            this.SelectedColor = this.Space.FindObjectByName("CraftingColor1").Sprite.VertexColor;
+            
+            for (var i = 0; i < 64; ++i)
+            {
+                this.Space.FindObjectByName("CraftingSlot`i + 1`").CraftingSlot.Data = 0;
+                this.Space.FindObjectByName("CraftingSlot`i + 1`").CraftingSlot.UpdateColor();
+                this.CurrentCraftingLayout.Add(0);
+            }
+        }
+        else
+        {
+            for (var i = 0; i < 64; ++i)
+                this.CurrentCraftingLayout.Add(this.Space.FindObjectByName("CraftingSlot`i + 1`").CraftingSlot.Data);
+        }
     }
     
     function CreateRecipes()
@@ -81,6 +92,34 @@ class Crafting : ZilchComponent
         1,0,1,0,1,0,1,0,
         1,0,1,0,1,0,1,0
         };
+    }
+    
+    function CheckAllRecipes()
+    {
+        if (this.CheckForRecipe("TestThing1"))
+        {
+            if (this.CraftingConfirmed)
+            {
+                this.LevelSettings.Inventory.GiveItems(1, 1);
+                this.GetClearCraftingLayout(true);
+            }
+            
+            this.Space.FindObjectByName("CraftingOutput").Sprite.VertexColor = Real4(1.0, 0.75, 0.0, 1.0);
+        }
+        else if (this.CheckForRecipe("TestThing2"))
+        {
+            if (this.CraftingConfirmed)
+            {
+                this.LevelSettings.Inventory.GiveItems(2, 1);
+                this.GetClearCraftingLayout(true);
+            }
+            
+            this.Space.FindObjectByName("CraftingOutput").Sprite.VertexColor = Real4(0.0, 1.0, 0.75, 1.0);
+        }
+        else
+            this.Space.FindObjectByName("CraftingOutput").Sprite.VertexColor = Real4(1.0, 1.0, 1.0, 1.0);
+        
+        this.CraftingConfirmed = false;
     }
     
     function CheckForRecipe(itemName : String) : Boolean
