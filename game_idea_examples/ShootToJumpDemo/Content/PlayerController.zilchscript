@@ -1,0 +1,89 @@
+class PlayerController : ZilchComponent
+{
+  [Dependency] var RigidBody : RigidBody;
+  [Dependency] var Transform : Transform;
+  
+  [Property] var KnockBackSpeed : Real = Real(8);
+  [Property] var LaunchSpeed : Real = Real(5);
+  [Property] var BulletSpeed : Real = Real(20);
+  
+  [Property] var PlayerMoveSpeed : Real = Real(1);
+  
+  var Grounded : Boolean = true;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LeftMouseDown, this.OnLeftMouseDown);
+    Zero.Connect(this.Space, Events.PlayerBulletHit, this.OnPlayerBulletHit);
+    
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    var movement = Real3(0, 0, 0);
+    
+    if(Zero.Keyboard.KeyIsDown(Keys.A))
+    {
+      movement.X -= this.PlayerMoveSpeed;
+    }
+    
+    if(Zero.Keyboard.KeyIsDown(Keys.D))
+    {
+      movement.X += this.PlayerMoveSpeed;
+    }
+    
+    if(Zero.Keyboard.KeyIsDown(Keys.W))
+    {
+      movement.X += this.PlayerMoveSpeed;
+    }
+    
+    this.RigidBody.Velocity += movement;
+  }
+
+  function OnPlayerBulletHit(event : PlayerBulletHit)
+  {
+    Console.WriteLine("hit");
+    
+    var distance = this.Transform.Translation - event.Location;
+    
+    if (Math.ApproximatelyEqual(distance.X, 0, 5) && Math.ApproximatelyEqual(distance.Y, 0, 5))
+    {
+      var speed = 0.5 * (distance.X * distance.X + distance.Y * distance.Y);
+
+      Console.WriteLine(speed);
+      
+      speed = Math.Abs(speed - 5);
+      
+      
+      Console.WriteLine(speed);
+
+      this.LaunchPlayer(distance * Real3(1, 1, 0), speed * this.LaunchSpeed);
+      
+    }
+    
+  }
+
+  function OnLeftMouseDown(event : ViewportMouseEvent)
+  {
+    var mousePos = event.ToWorldZPlane( 0.0 );
+   
+    var jumpVector = this.Transform.Translation - mousePos;
+    
+    this.LaunchPlayer( jumpVector, this.KnockBackSpeed);
+    
+    this.FireRevoler(mousePos - this.Transform.Translation);
+  }
+  
+  function LaunchPlayer ( direction : Real3, speed : Real)
+  {
+    this.RigidBody.Velocity += Math.Normalize(direction) * speed;
+  }
+  
+  function FireRevoler(direction : Real3)
+  {
+    var bullet = this.Space.CreateAtPosition(Archetype.PlayerBullet, this.Transform.Translation);
+    
+    bullet.RigidBody.Velocity += this.BulletSpeed * Math.Normalize(direction);
+  }
+}

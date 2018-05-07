@@ -1,0 +1,67 @@
+[Version:1]
+Cog 
+{
+	var Name = "PlayerBullet"
+	Transform 
+	{
+		var Translation = Real3{1, 5.5, 0}
+		var Scale = Real3{1, 1, 1}
+		var Rotation = Quaternion{0, 0, 0.00852481555, 0.999963701}
+	}
+	Sprite 
+	{
+		var Visible = true
+		var ViewCulling = true
+		var VisibilityEvents = true
+		var OverrideBoundingBox = false
+		var LocalAabbCenter = Real3{0, 0, 0}
+		var LocalAabbHalfExtents = Real3{1, 1, 1}
+		var GroupSortValue = 0
+		var Material = "582c575af53d18c9:AlphaSprite"
+		var VertexColor = Real4{1, 0.75, 0, 1}
+		var GeometryMode = SpriteGeometryMode.ZPlane
+		var SpriteSource = "5586f1922250b073:CircleBordered"
+		var FlipX = false
+		var FlipY = false
+		var AnimationActive = true
+		var AnimationSpeed = 1
+		var StartFrame = 0
+	}
+	SphereCollider 
+	{
+		var Ghost = true
+		var SendsEvents = true
+		var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+		var CollisionGroup = "5af3a26d77442316:PlayerBulletCollsion"
+		var Offset = Real3{0, 0, 0}
+		var Radius = 0.400000006
+	}
+	RigidBody 
+	{
+		var Velocity = Real3{0, 0, 0}
+		var AngularVelocity = Real3{0, 0, 0}
+		var DynamicState = RigidBodyDynamicState.Dynamic
+		var AllowSleep = true
+		var Asleep = false
+		var RotationLocked = false
+		var Mode2D = Mode2DStates.InheritFromSpace
+	}
+	IgnoreSpaceEffects 
+	{
+		var IgnoreDrag = true
+		var IgnoreFlow = false
+		var IgnoreForce = false
+		var IgnoreGravity = true
+		var IgnorePointForce = false
+		var IgnorePointGravity = false
+		var IgnoreThrust = false
+		var IgnoreVortex = false
+		var IgnoreWind = false
+		var IgnoreTorque = false
+		var IgnoreBuoyancy = false
+		var IgnoreCustom = false
+	}
+	Bullet 
+	{
+	}
+}

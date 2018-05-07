@@ -1,0 +1,25 @@
+class PlayerBulletHit : ZilchEvent
+{
+  var Location : Real3;
+  
+  sends PlayerBulletHit : PlayerBulletHit;
+} 
+
+class Bullet : ZilchComponent
+{
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+  }
+
+  function OnCollisionStarted(event : Event)
+  {
+    var hitEvent : PlayerBulletHit = new PlayerBulletHit();
+        
+    hitEvent.Location = this.Owner.Transform.Translation;
+        
+    this.Space.DispatchEvent(Events.PlayerBulletHit, hitEvent); 
+        
+    this.Owner.Destroy();
+  }
+}
