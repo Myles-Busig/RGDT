@@ -11,6 +11,8 @@ class PlayerController : ZilchComponent
   
   var Grounded : Boolean = true;
   
+  [Property] var Jump : Integer = 1;
+  
   function Initialize(init : CogInitializer)
   {
     Zero.Connect(this.Space, Events.LeftMouseDown, this.OnLeftMouseDown);
@@ -33,9 +35,14 @@ class PlayerController : ZilchComponent
       movement.X += this.PlayerMoveSpeed;
     }
     
-    if(Zero.Keyboard.KeyIsDown(Keys.W))
+    if(Zero.Keyboard.KeyIsDown(Keys.Space))
     {
-      movement.X += this.PlayerMoveSpeed;
+      if(this.Jump > 0 && this.Grounded)
+      {
+        movement.Y += this.PlayerMoveSpeed;
+        
+        this.Jump -= 1;
+      }
     }
     
     this.RigidBody.Velocity += movement;
@@ -49,12 +56,11 @@ class PlayerController : ZilchComponent
     
     if (Math.ApproximatelyEqual(distance.X, 0, 5) && Math.ApproximatelyEqual(distance.Y, 0, 5))
     {
-      var speed = 0.5 * (distance.X * distance.X + distance.Y * distance.Y);
+      var speed = ((distance.X * distance.X) + (distance.Y * distance.Y));
 
       Console.WriteLine(speed);
       
       speed = Math.Abs(speed - 5);
-      
       
       Console.WriteLine(speed);
 
