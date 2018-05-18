@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html style = "background-color: #333333">
+
+	<style>
+			.flex-container {
+				display: flex;
+				background-color: Aquamarine;
+			}
+			.flex-container > div {
+				background-color: #f1f1f1;
+				margin: 20px;
+				padding: 50px;
+				padding-right: 120px;
+				padding-left: 120px;
+				font-size: 30px;
+			}
+			.column {
+				float: left;
+				width: 10%;
+			}
+	</style>
+
+	<head>
+		<div class="flex-container">
+			<h1 style = "color: white;">
+				This is Color Snake! 
+			</h1>
+		</div>	
+		<div class="flex-container">
+			<h2 style = "color: white;">
+				Color Snake isn't just a neat graphical effect, it's built with a simple generative algorithm that can be trained over multiple iterations.<br> 
+				This means that every iteration Color Snake's properties change a little bit.<br>
+				If you chose to save an iteration, the next iteration's change will build on the last ones, slowly changing the look of Color Snake each time.<br>
+				You can click on don't save this iteration to discard the latest set of changes.<br>
+				If you don't like where Color Snake has ended up, you can click on the reset button to reset everything to their starting values.<br>
+			</h2>
+		</div>	
+	</head>
+	<body>
+		<meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+		<style> body {padding: 0; margin: 0;} </style>
+		<script src="../p5/p5/p5.min.js"></script>
+		<script src="../p5/p5/addons/p5.dom.min.js"></script>
+		<script src="../p5/p5/addons/p5.sound.min.js"></script>
+		<script src="main.js"></script>
+	</body>
+	<footer>
+		<h1>
+	</footer>
+</html>
