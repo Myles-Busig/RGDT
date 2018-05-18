@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "Proeject_Trellis"
+	var LibraryId = 0x5ae546ba32c494e2
+	var SourceControlType = ""
+	var ReadOnly = false
+}

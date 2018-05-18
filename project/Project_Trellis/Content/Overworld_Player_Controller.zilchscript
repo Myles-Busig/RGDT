@@ -1,0 +1,32 @@
+class Overworld_Player_Controller : ZilchComponent
+{
+    [Property] var Speed : Real = 5.0;
+    [Property] var RunMultiplier : Real = 1.5;
+    
+    var InvOpen : Boolean = false;
+    
+    var HUDSpace : Space = null;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var speed = this.Speed;
+        
+        if (Zero.Keyboard.KeyIsDown(Keys.Shift))
+            speed *= this.RunMultiplier;
+        
+        if (Zero.Keyboard.KeyIsDown(Keys.A) && this.InvOpen == false)
+            this.Owner.Transform.Translation -= Real3(speed / 100, 0.0, 0.0);
+        else if (Zero.Keyboard.KeyIsDown(Keys.D) && this.InvOpen == false)
+            this.Owner.Transform.Translation += Real3(speed / 100, 0.0, 0.0);
+        
+        if (Zero.Keyboard.KeyIsDown(Keys.W) && this.InvOpen == false)
+            this.Owner.Transform.Translation += Real3(0.0, speed / 100, 0.0);
+        else if (Zero.Keyboard.KeyIsDown(Keys.S) && this.InvOpen == false)
+            this.Owner.Transform.Translation -= Real3(0.0, speed / 100, 0.0);
+    }
+}

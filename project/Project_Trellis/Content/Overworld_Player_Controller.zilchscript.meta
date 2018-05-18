@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "Overworld_Player_Controller"
+		var ResourceId = 0x5ae543dbe6dcd8e2
+	}
+}

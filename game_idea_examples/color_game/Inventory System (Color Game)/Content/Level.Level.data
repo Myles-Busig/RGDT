@@ -73,7 +73,7 @@ Level
 		var Name = "EditorCamera"
 		Transform 
 		{
-			var Translation = Real3{-0.481586128, 0.396600366, 20}
+			var Translation = Real3{-0.481586128, 0.396600366, 32.974411}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, -1.09278471e-08, 0, 1}
 		}
@@ -126,13 +126,13 @@ Level
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 19.9999905
+			var Size = 40.2750092
 		}
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.ZPlane
 			var Previous3DMode = ControlMode.Orbit
-			var LookDistance = 20
+			var LookDistance = 32.974411
 			var VerticalAngle = 0
 			var HorizontalAngle = 0
 			var LookTarget = Real3{-0.481586128, 0.396600366, -2.10507984e-08}
@@ -169,8 +169,8 @@ Level
 		}
 		PlayerMovement 
 		{
-			var Speed = 5
-			var RunMultiplier = 2
+			var Speed = 7.5
+			var RunMultiplier = 1.5
 		}
 		BoxCollider 
 		{
