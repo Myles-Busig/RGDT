@@ -1,11 +1,28 @@
+/***
+File: POverworld_Player_Controller.ZilchScript
+Contributers: Jakob McFarland, 
+Last Edited: 5/18/2018
+Last Edited by: Jakob McFarland
+Brief: Handles player input.
+***/
+
+/*
+Uncommented for now, talk to Jakob on discord for now
+*/
+
 class Overworld_Player_Controller : ZilchComponent
 {
-    [Property] var Speed : Real = 5.0;
-    [Property] var RunMultiplier : Real = 1.5;
+    [Dependency]
+    var Transform : Transform;
+    [Dependency]
+    var RigidBody : RigidBody;
+  
+    [Property] 
+    var Speed : Real = 5.0;
+    [Property]
+    var RunMultiplier : Real = 1.5;
     
-    var InvOpen : Boolean = false;
-    
-    var HUDSpace : Space = null;
+    var Direction : Integer = 0;
     
     function Initialize(init : CogInitializer)
     {
@@ -19,14 +36,14 @@ class Overworld_Player_Controller : ZilchComponent
         if (Zero.Keyboard.KeyIsDown(Keys.Shift))
             speed *= this.RunMultiplier;
         
-        if (Zero.Keyboard.KeyIsDown(Keys.A) && this.InvOpen == false)
-            this.Owner.Transform.Translation -= Real3(speed / 100, 0.0, 0.0);
-        else if (Zero.Keyboard.KeyIsDown(Keys.D) && this.InvOpen == false)
-            this.Owner.Transform.Translation += Real3(speed / 100, 0.0, 0.0);
+        if (Zero.Keyboard.KeyIsDown(Keys.A))
+            this.RigidBody.Velocity += Real3(-speed / 100, 0.0, 0.0);
+        else if (Zero.Keyboard.KeyIsDown(Keys.D))
+            this.RigidBody.Velocity += Real3(speed / 100, 0.0, 0.0);
         
-        if (Zero.Keyboard.KeyIsDown(Keys.W) && this.InvOpen == false)
-            this.Owner.Transform.Translation += Real3(0.0, speed / 100, 0.0);
-        else if (Zero.Keyboard.KeyIsDown(Keys.S) && this.InvOpen == false)
-            this.Owner.Transform.Translation -= Real3(0.0, speed / 100, 0.0);
+        if (Zero.Keyboard.KeyIsDown(Keys.W))
+            this.RigidBody.Velocity += Real3(0.0, speed / 100, 0.0);
+        else if (Zero.Keyboard.KeyIsDown(Keys.S))
+            this.RigidBody.Velocity += Real3(0.0, -speed / 100, 0.0);
     }
 }

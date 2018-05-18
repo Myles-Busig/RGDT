@@ -27,90 +27,47 @@ Cog
 		var AnimationSpeed = 1
 		var StartFrame = 0
 	}
+	RigidBody 
+	{
+		var Velocity = Real3{0, 0, 0}
+		var AngularVelocity = Real3{0, 0, 0}
+		var DynamicState = RigidBodyDynamicState.Dynamic
+		var AllowSleep = true
+		var Asleep = false
+		var RotationLocked = false
+		var Mode2D = Mode2DStates.InheritFromSpace
+	}
+	BoxCollider 
+	{
+		var Ghost = false
+		var SendsEvents = true
+		var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+		var CollisionGroup = "4e740859314e5515:DefaultGroup"
+		var Offset = Real3{0, 0, 0}
+		var HalfSize = Real3{0.5, 0.5, 0.5}
+	}
+	DragEffect 
+	{
+		var Active = true
+		var WakeUpOnChange = true
+		var DebugDrawEffect = true
+		var LinearDamping = 0.400000006
+		var AngularDamping = 0.400000006
+		var LinearDrag = 4
+		var AngularDrag = 4
+	}
 	Overworld_Player_Controller 
 	{
-		var Speed = 5
+		var Speed = 20
 		var RunMultiplier = 1.5
+	}
+	Orientation 
+	{
+		var GlobalUp = Real3{0, 1, 0}
+		var LocalOrientationBasis = Quaternion{0, -0.707106769, 0, 0.707106769}
+		var DefaultBases = OrientationBases.ForwardXUpY
 	}
 	Hierarchy 
 	{
-		Cog [Id:0x5ae5558a46e59cdb]
-		{
-			var Name = "Overworld_GameCamera"
-			Transform 
-			{
-				var Translation = Real3{0, 0, 10}
-				var Scale = Real3{1, 1, 1}
-				var Rotation = Quaternion{0, 0, 0, 1}
-			}
-			SelectionIcon 
-			{
-				var Visible = true
-				var VisibilityEvents = true
-				var Material = "56581e2bb81777be:DebugDrawOnTop"
-				var SpriteSource = "58f8e4be7360cf7c:CameraIcon"
-				var ViewScale = 1
-				var OverrideSelections = true
-			}
-			CameraViewport 
-			{
-				var RenderInEditor = false
-				var RenderInGame = true
-				var RenderOrder = 0
-				var CameraPath = CogPath
-				{
-					var Path = "."
-					var ErrorOnResolveToNull = false
-					var ErrorOnPathCantCompute = false
-					var ErrorOnDirectLinkFail = false
-					var UpdateCogOnPathChange = true
-					var UpdatePathOnCogChange = true
-					var UpdateCogOnInitialize = true
-					var ResolvedNullErrorOccurred = false
-					var Cog = 4294967293
-					var PathPreference0 = CogPathPreference.CogRelative
-					var PathPreference1 = CogPathPreference.SpaceRelative
-					var PathPreference2 = CogPathPreference.Absolute
-				}
-				var RendererPath = CogPath
-				{
-					var Path = ":/Renderer"
-					var ErrorOnResolveToNull = false
-					var ErrorOnPathCantCompute = false
-					var ErrorOnDirectLinkFail = false
-					var UpdateCogOnPathChange = true
-					var UpdatePathOnCogChange = true
-					var UpdateCogOnInitialize = true
-					var ResolvedNullErrorOccurred = false
-					var Cog = 4294967293
-					var PathPreference0 = CogPathPreference.CogRelative
-					var PathPreference1 = CogPathPreference.SpaceRelative
-					var PathPreference2 = CogPathPreference.Absolute
-				}
-				var ResolutionOrAspect = Integer2{1920, 1080}
-				var RenderToViewport = true
-				var ForwardViewportEvents = false
-				var ViewportScaling = ViewportScaling.Letterbox
-				var MarginColor = Real4{0, 0, 0, 1}
-				var NormalizedSize = Real2{1, 1}
-				var NormalizedOffset = Real2{0, 0}
-			}
-			Camera 
-			{
-				var NearPlane = 0.100000001
-				var FarPlane = 200
-				var PerspectiveMode = PerspectiveMode.Orthographic
-				var FieldOfView = 60
-				var Size = 15
-			}
-			SoundListener 
-			{
-				var Active = true
-				var AttenuationScale = 1
-			}
-			Overworld_CameraFollower 
-			{
-			}
-		}
 	}
 }

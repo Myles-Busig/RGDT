@@ -1,5 +1,26 @@
+/***
+File: Overworld_CameraFollower.ZilchScript
+Contributers: Jakob McFarland, 
+Last Edited: 5/18/2018
+Last Edited by: Jakob McFarland
+Brief: Handles the camera following.
+***/
+
+/*
+Uncommented for now, talk to Jakob on discord for now
+*/
+
 class Overworld_CameraFollower : ZilchComponent
 {
+  [Dependency]
+  var Transform : Transform;
+  
+  [Property]
+  var LerpValue : Real = 0.5;
+  
+  [Property]
+  var Target : CogPath = null;
+  
   function Initialize(init : CogInitializer)
   {
     Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
@@ -7,5 +28,33 @@ class Overworld_CameraFollower : ZilchComponent
 
   function OnLogicUpdate(event : UpdateEvent)
   {
+    var points : Array[Real3] = Array[Real3]();
+    
+    if(this.Target != null)
+    {
+      
+      points.Add(this.Target.Cog.Transform.Translation);
+      points.Add(this.Target.Cog.Transform.Translation);
+      //points.Add(this.Target.Cog.Transform.Translation);
+      points.Add(this.Target.Cog.RigidBody.Velocity + this.Transform.Translation);
+    }
+  
+    this.AdjCamera(points);
+  }
+  
+  function AdjCamera(points : Array[Real3])
+  {  
+    var newPoint = Real3(0, 0, 0);
+    
+    foreach(var point in points)
+    {
+      newPoint += point;
+    }
+    
+    newPoint /= points.Count;
+    
+    newPoint.Z = this.Transform.Translation.Z;
+    
+    this.Transform.Translation = Math.Lerp( this.Transform.Translation, newPoint, this.LerpValue);
   }
 }
