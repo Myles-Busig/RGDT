@@ -6,10 +6,6 @@ Last Edited by: Jakob McFarland
 Brief: Handles the camera following.
 ***/
 
-/*
-Uncommented for now, talk to Jakob on discord for now
-*/
-
 class Overworld_CameraFollower : ZilchComponent
 {
   [Dependency]
@@ -28,33 +24,42 @@ class Overworld_CameraFollower : ZilchComponent
 
   function OnLogicUpdate(event : UpdateEvent)
   {
+    //declare an array of all points the camera will consider
     var points : Array[Real3] = Array[Real3]();
     
     if(this.Target != null)
     {
-      
+      /*this controlles what points that the camera will go to, the function will find the average of all of them,
+      adding multiples of the same gives that value a higher priority. */  
       points.Add(this.Target.Cog.Transform.Translation);
       points.Add(this.Target.Cog.Transform.Translation);
-      //points.Add(this.Target.Cog.Transform.Translation);
+      points.Add(this.Target.Cog.Transform.Translation);
       points.Add(this.Target.Cog.RigidBody.Velocity + this.Transform.Translation);
     }
   
+    //adjust the camera
     this.AdjCamera(points);
   }
   
+  //takes a list of points, takes the average value of all of them and lerps to that position.
   function AdjCamera(points : Array[Real3])
-  {  
+  { 
+    //average point 
     var newPoint = Real3(0, 0, 0);
     
+    //add the value of all the input points
     foreach(var point in points)
     {
       newPoint += point;
     }
     
+    //divide that by the amount of points, this gives the average of them all
     newPoint /= points.Count;
     
+    //make sure the camera remains the same disstance away from the play in the Z dimension
     newPoint.Z = this.Transform.Translation.Z;
     
+    //set the camera to the lerp of that average value
     this.Transform.Translation = Math.Lerp( this.Transform.Translation, newPoint, this.LerpValue);
   }
 }

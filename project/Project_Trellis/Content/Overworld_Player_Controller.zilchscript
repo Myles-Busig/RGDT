@@ -1,14 +1,10 @@
 /***
-File: POverworld_Player_Controller.ZilchScript
+File: Overworld_Player_Controller.ZilchScript
 Contributers: Jakob McFarland, 
 Last Edited: 5/18/2018
 Last Edited by: Jakob McFarland
 Brief: Handles player input.
 ***/
-
-/*
-Uncommented for now, talk to Jakob on discord for now
-*/
 
 class Overworld_Player_Controller : ZilchComponent
 {
@@ -31,6 +27,9 @@ class Overworld_Player_Controller : ZilchComponent
 
     function OnLogicUpdate(event : UpdateEvent)
     {
+        /*
+        Hadle user input
+        */
         var speed = this.Speed;
         
         if (Zero.Keyboard.KeyIsDown(Keys.Shift))
