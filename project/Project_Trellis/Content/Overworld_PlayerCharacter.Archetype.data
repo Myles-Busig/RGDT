@@ -93,7 +93,7 @@ Cog
 				var SystemSpace = SystemSpace.WorldSpace
 				var WarmUpTime = 0
 				var PreviewInEditor = false
-				var VertexColor = Real4{0.996078491, 0.945098102, 0.690196097, 1}
+				var VertexColor = Real4{0.945098102, 0.874509871, 0.509803951, 1}
 				var GeometryMode = SpriteParticleGeometryMode.Billboarded
 				var SpriteSource = "5ae4c47a23e82c02:LowPolyFootPrint"
 				var ParticleAnimation = SpriteParticleAnimationMode.Single

@@ -77,9 +77,9 @@ Level
 		var Name = "EditorCamera"
 		Transform 
 		{
-			var Translation = Real3{0.0181007385, 1.29321301, 16.3717232}
+			var Translation = Real3{0.275288403, 1.46467984, 32.9744644}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{0.00523565244, -0.00785380788, 4.11217006e-05, 0.999955535}
+			var Rotation = Quaternion{0, -1.09278471e-08, 0, 1}
 		}
 		CameraViewport 
 		{
@@ -128,17 +128,17 @@ Level
 		{
 			var NearPlane = 0.5
 			var FarPlane = 500
-			var PerspectiveMode = PerspectiveMode.Perspective
+			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 13.4064188
+			var Size = 29.8365192
 		}
 		EditorCameraController 
 		{
-			var ControlMode = ControlMode.Orbit
+			var ControlMode = ControlMode.ZPlane
 			var Previous3DMode = ControlMode.Orbit
-			var LookDistance = 16.3746414
-			var VerticalAngle = -0.0104716746
-			var HorizontalAngle = 0.0157079678
+			var LookDistance = 32.9744644
+			var VerticalAngle = 0
+			var HorizontalAngle = 0
 			var LookTarget = Real3{0.275288403, 1.46467984, -3.89637442e-08}
 			var MoveSensitivity = 1
 		}
@@ -251,7 +251,7 @@ Level
 		var Name = "background_001"
 		Transform 
 		{
-			var Translation = Real3{0, 0, -1}
+			var Translation = Real3{0, 0, -2}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -265,7 +265,7 @@ Level
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
 			var Material = "582c575af53d18c9:AlphaSprite"
-			var VertexColor = Real4{0.996078491, 0.945098102, 0.690196097, 1}
+			var VertexColor = Real4{0.944999993, 0.874160051, 0.510299981, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var SpriteSource = "5275aa4d802dd6dc:Square"
 			var FlipX = false
@@ -278,6 +278,60 @@ Level
 		{
 			var Size = Real2{100, 100}
 			var Origin = Location.Center
+		}
+	}
+	Cog [InheritId:"5b1a29e237f2bb79:Overworld_Desert_Props000"][ContextId:7]
+	{
+		Transform 
+		{
+			var Translation = Real3{-4.25, 5.25, -1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+			var Scale = Real3{10, 10, 1}
+		}
+	}
+	Cog [InheritId:"5b1a28ef78b301ae:Overworld_Desert_Props001"][ContextId:8]
+	{
+		Transform 
+		{
+			var Translation = Real3{10, 0, 0}
+			var Rotation = Quaternion{0, 0, 0, 1}
+			var Scale = Real3{10, 10, 1}
+		}
+	}
+	Cog [InheritId:"5b1a28b887b122f8:Overworld_Desert_Props002"][ContextId:9]
+	{
+		Transform 
+		{
+			var Translation = Real3{-8, -3, 0}
+			var Rotation = Quaternion{0, 0, 0, 1}
+			var Scale = Real3{10, 10, 1}
+		}
+	}
+	Cog [InheritId:"5b1a2fddc038ce0c:Overworld_Desert_Rock000"][ContextId:10]
+	{
+		Transform 
+		{
+			var Translation = Real3{6, 8.25, -0.75}
+			var Rotation = Quaternion{0, 0, 0, 1}
+			var Scale = Real3{10, 10, 1}
+		}
+	}
+	Cog [InheritId:"5b1a2ed006eba5d0:Overworld_Desert_Rock001"][ContextId:11]
+	{
+		Transform 
+		{
+			var Translation = Real3{-3.75, -6, 0}
+			var Rotation = Quaternion{0, 0, 0, 1}
+			var Scale = Real3{10, 10, 1}
+		}
+	}
+	Cog [InheritId:"5b1a2ea900c7fcef:Overworld_Desert_Rock002"][ContextId:12]
+	{
+		Transform 
+		{
+			var Translation = Real3{8.5, -5.5, 0}
+			var Rotation = Quaternion{0, 0, 0, 1}
+			var Scale = Real3{10, 10, 1}
 		}
 	}
 }
