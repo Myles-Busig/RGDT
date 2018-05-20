@@ -1,0 +1,41 @@
+//Jacob Burke
+
+//This will move a target in combat once it is selected
+
+
+class BattleMove : ZilchComponent
+{
+  var IsSelected:Boolean = true;
+  
+  var MovementSpeed:Integer;
+  function Initialize(init : CogInitializer)
+  {
+    //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    Zero.Connect(this.Space, Events.LeftMouseDown, this.OnLeftMouseDown);
+  }
+
+  function OnLeftMouseDown(event : ViewportMouseEvent)
+  {
+    
+    var mousePos = event.ToWorldZPlane(0);
+    
+    if(mousePos.X > this.Owner.Transform.Translation.X + 1)
+    Console.WriteLine("Right");
+    else if(mousePos.X < this.Owner.Transform.Translation.X - 1)
+    Console.WriteLine("Left");
+    else if(mousePos.Y > this.Owner.Transform.Translation.Y + 1)
+    Console.WriteLine("up");
+    else if(mousePos.Y < this.Owner.Transform.Translation.Y - 1)
+    Console.WriteLine("down");
+      
+  }
+  
+  function MoveRight()
+  {
+    
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+  }
+}
