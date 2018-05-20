@@ -1,0 +1,20 @@
+[Version:1]
+ImageContent 
+{
+	SpriteSourceBuilder 
+	{
+		var Name = "Overworld_Desert_Props"
+		var ResourceId = 0x5b1a2c8a90fba54f
+		var FrameSizeX = 160
+		var FrameSizeY = 160
+		var FrameCount = 1
+		var FrameDelay = 0.0833333358
+		var OriginX = 80
+		var OriginY = 80
+		var PixelsPerUnit = 64
+		var Sampling = SpriteSampling.Linear
+		var Looping = true
+		var Slices = Real4{0, 0, 0, 0}
+		var Fill = SpriteFill.Stretch
+	}
+}
