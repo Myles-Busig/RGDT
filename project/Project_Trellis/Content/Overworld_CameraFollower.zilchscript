@@ -57,7 +57,7 @@ class Overworld_CameraFollower : ZilchComponent
     newPoint /= points.Count;
     
     //make sure the camera remains the same disstance away from the play in the Z dimension
-    newPoint.Z = this.Transform.Translation.Z;
+    newPoint.Z = this.Target.Transform.Translation.Z + Real(10);
     
     //set the camera to the lerp of that average value
     this.Transform.Translation = Math.Lerp( this.Transform.Translation, newPoint, this.LerpValue);
