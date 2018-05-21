@@ -1,9 +1,19 @@
 [Version:1]
 Level 
 {
-	Cog [ContextId:1]
+	Cog 
 	{
 		var Name = "LevelSettings"
+		var LinkId = 1
+		GravityEffect 
+		{
+			var Active = true
+			var WakeUpOnChange = false
+			var DebugDrawEffect = false
+			var LocalSpaceDirection = true
+			var Strength = 10
+			var Direction = Real3{0, -1, 0}
+		}
 		DragEffect 
 		{
 			var Active = true
@@ -30,9 +40,10 @@ Level
 			var FollowEditorCamera = false
 		}
 	}
-	Cog [ContextId:2]
+	Cog 
 	{
 		var Name = "Renderer"
+		var LinkId = 2
 		ForwardRenderer 
 		{
 			var EditorDebugDraw = true
@@ -56,27 +67,32 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var Cog = 4294967293
+				var ResolvedCog = 4294967293
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
 		}
 	}
-	Cog [ContextId:3]
+	Cog 
 	{
 		var Name = "EditorCamera"
+		var LinkId = 3
 		Transform 
 		{
-			var Translation = Real3{0.275288403, 1.46467984, 32.9744644}
+			var Translation = Real3{0, 0, 10}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{0, -1.09278471e-08, 0, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		CameraViewport 
 		{
 			var RenderInEditor = true
 			var RenderInGame = false
+			var RenderToViewport = true
+			var ForwardViewportEvents = false
 			var RenderOrder = 0
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
 			var CameraPath = CogPath
 			{
 				var Path = "."
@@ -87,7 +103,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var Cog = 3
+				var ResolvedCog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -102,18 +118,14 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var Cog = 2
+				var ResolvedCog = 2
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var ResolutionOrAspect = Integer2{1920, 1080}
-			var RenderToViewport = true
-			var ForwardViewportEvents = false
+			var Resolution = Real2{1920, 1080}
 			var ViewportScaling = ViewportScaling.Fill
 			var MarginColor = Real4{0, 0, 0, 1}
-			var NormalizedSize = Real2{1, 1}
-			var NormalizedOffset = Real2{0, 0}
 		}
 		Camera 
 		{
@@ -121,43 +133,23 @@ Level
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 29.8365192
-			var Size = 73.3859482
+			var Size = 19.9999905
 		}
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.ZPlane
 			var Previous3DMode = ControlMode.Orbit
-			var LookDistance = 32.9744644
-			var LookDistance = 73.3859863
+			var LookDistance = 20
 			var VerticalAngle = 0
 			var HorizontalAngle = 0
-			var LookTarget = Real3{0.275304556, 3.81860161, -3.89631687e-08}
+			var LookTarget = Real3{0, 0, 0}
 			var MoveSensitivity = 1
 		}
 	}
-	Cog [InheritId:"5ae542530ad0dad6:Overworld_PlayerCharacter"][ContextId:4]
+	Cog 
 	{
-		Transform 
-		{
-			var Translation = Real3{0, 0, 0}
-			var Rotation = Quaternion{0, 0, 0, 1}
-			var Scale = Real3{1, 1, 1}
-		}
-		Hierarchy 
-		{
-			Cog [Id:0x5ae4b0087d9b24de][ContextId:5]
-			{
-				SpriteParticleSystem 
-				{
-					var Visible = true
-				}
-			}
-		}
-	}
-	Cog [ContextId:6]
-	{
-		var Name = "Overworld_GameCamera"
+		var Name = "GameCamera"
+		var LinkId = 4
 		Transform 
 		{
 			var Translation = Real3{0, 0, 10}
@@ -177,7 +169,11 @@ Level
 		{
 			var RenderInEditor = false
 			var RenderInGame = true
+			var RenderToViewport = true
+			var ForwardViewportEvents = false
 			var RenderOrder = 0
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
 			var CameraPath = CogPath
 			{
 				var Path = "."
@@ -188,7 +184,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var Cog = 6
+				var ResolvedCog = 4
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -203,18 +199,14 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var Cog = 2
+				var ResolvedCog = 2
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var ResolutionOrAspect = Integer2{1920, 1080}
-			var RenderToViewport = true
-			var ForwardViewportEvents = false
+			var Resolution = Real2{1920, 1080}
 			var ViewportScaling = ViewportScaling.Letterbox
 			var MarginColor = Real4{0, 0, 0, 1}
-			var NormalizedSize = Real2{1, 1}
-			var NormalizedOffset = Real2{0, 0}
 		}
 		Camera 
 		{
@@ -222,120 +214,11 @@ Level
 			var FarPlane = 200
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 60
-			var Size = 15
+			var Size = 20
 		}
 		SoundListener 
 		{
 			var Active = true
-			var AttenuationScale = 1
-		}
-		Overworld_CameraFollower 
-		{
-			var LerpValue = 0.5
-			var Target = CogPath
-			{
-				var Path = ":/Overworld_PlayerCharacter"
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var Cog = 4
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-		}
-	}
-	Cog [ContextId:7]
-	{
-		var Name = "background_001"
-		Transform 
-		{
-			var Translation = Real3{0, 0, -2}
-			var Translation = Real3{0, 0, -1}
-			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{0, 0, 0, 1}
-		}
-		Sprite 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var OverrideBoundingBox = false
-			var LocalAabbCenter = Real3{0, 0, 0}
-			var LocalAabbHalfExtents = Real3{1, 1, 1}
-			var GroupSortValue = 0
-			var Material = "582c575af53d18c9:AlphaSprite"
-			var VertexColor = Real4{0.944999993, 0.874160051, 0.510299981, 1}
-			var GeometryMode = SpriteGeometryMode.ZPlane
-			var SpriteSource = "5275aa4d802dd6dc:Square"
-			var FlipX = false
-			var FlipY = false
-			var AnimationActive = true
-			var AnimationSpeed = 1
-			var StartFrame = 0
-		}
-		Area 
-		{
-			var Size = Real2{100, 100}
-			var Origin = Location.Center
-		}
-	}
-	Cog [InheritId:"5b1a29e237f2bb79:Overworld_Desert_Props000"][ContextId:8]
-	{
-		Transform 
-		{
-			var Translation = Real3{-4.25, 5.25, -1}
-			var Rotation = Quaternion{0, 0, 0, 1}
-			var Scale = Real3{10, 10, 1}
-		}
-	}
-	Cog [InheritId:"5b1a28ef78b301ae:Overworld_Desert_Props001"][ContextId:9]
-	{
-		Transform 
-		{
-			var Translation = Real3{10, 0, 0.100000001}
-			var Rotation = Quaternion{0, 0, 0, 1}
-			var Scale = Real3{10, 10, 1}
-		}
-	}
-	Cog [InheritId:"5b1a28b887b122f8:Overworld_Desert_Props002"][ContextId:10]
-	{
-		Transform 
-		{
-			var Translation = Real3{-8, -3, 0.100000001}
-			var Rotation = Quaternion{0, 0, 0, 1}
-			var Scale = Real3{10, 10, 1}
-		}
-	}
-	Cog [InheritId:"5b1a2fddc038ce0c:Overworld_Desert_Rock000"][ContextId:11]
-	{
-		Transform 
-		{
-			var Translation = Real3{6, 8.25, 0.100000001}
-			var Rotation = Quaternion{0, 0, 0, 1}
-			var Scale = Real3{10, 10, 1}
-		}
-	}
-	Cog [InheritId:"5b1a2ed006eba5d0:Overworld_Desert_Rock001"][ContextId:12]
-	{
-		Transform 
-		{
-			var Translation = Real3{-3.75, -6, 0.100000001}
-			var Rotation = Quaternion{0, 0, 0, 1}
-			var Scale = Real3{10, 10, 1}
-		}
-	}
-	Cog [InheritId:"5b1a2ea900c7fcef:Overworld_Desert_Rock002"][ContextId:13]
-	{
-		Transform 
-		{
-			var Translation = Real3{8.5, -5.5, 0.100000001}
-			var Rotation = Quaternion{0, 0, 0, 1}
-			var Scale = Real3{10, 10, 1}
 		}
 	}
 }

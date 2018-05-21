@@ -1,0 +1,56 @@
+// Creator: Myles Busig
+// Contributors: N/A
+// Summary: Creates footprints when the object moves
+
+class Footprints : ZilchComponent
+{
+    // Weather or not the object is a player object
+    [Property] var IsPlayer : Boolean = false;
+    
+    // The particle object
+    var FootprintParticles : Cog = null;
+    
+    // The default particle emit speed
+    var ParticleDefault : Real = 0;
+    
+    function Initialize(init : CogInitializer)
+    {
+        // Set the "FootprintParticles" object
+        this.FootprintParticles = this.Owner.FindChildByName("Footprint_Particles");
+        
+        // Set the default particle value
+        this.ParticleDefault = this.FootprintParticles.BoxParticleEmitter.EmitRate;
+        
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        // If the object has a particle system attached to it
+        if (this.FootprintParticles != null)
+        {
+            // If the object is not moving...
+            if (Math.ApproximatelyEqual(this.Owner.RigidBody.Velocity.X, 0.0, 0.15) &&
+                Math.ApproximatelyEqual(this.Owner.RigidBody.Velocity.Y, 0.0, 0.15))
+            {
+                // ... stop the particles
+                this.FootprintParticles.BoxParticleEmitter.Active = false;
+            }
+            else
+                // otherwise, make sure it is on
+                this.FootprintParticles.BoxParticleEmitter.Active = true;
+            
+            // If the object is a player object
+            if (this.IsPlayer)
+            {
+                // If the player is sprinting...
+                if (Zero.Keyboard.KeyIsDown(Keys.Shift))
+                    // ... increase the emit speed
+                    this.FootprintParticles.BoxParticleEmitter.EmitRate = this.ParticleDefault * 1.5;
+                else
+                    // otherwise, make it the default value
+                    this.FootprintParticles.BoxParticleEmitter.EmitRate = this.ParticleDefault;
+            }
+        }
+    }
+}
