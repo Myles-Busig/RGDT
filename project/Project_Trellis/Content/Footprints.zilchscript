@@ -1,10 +1,6 @@
-/***
-File: Footprints.ZilchScript
-Contributers: Myles Busig
-Last Edited: 5/20/2018
-Last Edited by: Myles Busig
-Brief: Creates footprints when the object moves
-***/
+// Creator: Myles Busig
+// Contributors: N/A
+// Summary: Creates footprints when the object moves
 
 class Footprints : ZilchComponent
 {
