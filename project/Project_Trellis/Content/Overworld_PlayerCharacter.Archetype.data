@@ -67,6 +67,10 @@ Cog
 		var LocalOrientationBasis = Quaternion{0, -0.707106769, 0, 0.707106769}
 		var DefaultBases = OrientationBases.ForwardXUpY
 	}
+	Footprints 
+	{
+		var IsPlayer = true
+	}
 	Hierarchy 
 	{
 		Cog [Id:0x5ae4b0087d9b24de]
