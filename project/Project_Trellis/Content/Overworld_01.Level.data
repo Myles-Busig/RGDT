@@ -78,6 +78,7 @@ Level
 		Transform 
 		{
 			var Translation = Real3{0.275288403, 1.46467984, 32.9744644}
+			var Translation = Real3{0.275288403, 1.46467984, 73.3859863}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, -1.09278471e-08, 0, 1}
 		}
@@ -131,12 +132,14 @@ Level
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
 			var Size = 29.8365192
+			var Size = 73.3859482
 		}
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.ZPlane
 			var Previous3DMode = ControlMode.Orbit
 			var LookDistance = 32.9744644
+			var LookDistance = 73.3859863
 			var VerticalAngle = 0
 			var HorizontalAngle = 0
 			var LookTarget = Real3{0.275288403, 1.46467984, -3.89637442e-08}
@@ -252,6 +255,7 @@ Level
 		Transform 
 		{
 			var Translation = Real3{0, 0, -2}
+			var Translation = Real3{0, 0, -1}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -285,6 +289,7 @@ Level
 		Transform 
 		{
 			var Translation = Real3{-4.25, 5.25, -1}
+			var Translation = Real3{-4.25, 5.25, 0}
 			var Rotation = Quaternion{0, 0, 0, 1}
 			var Scale = Real3{10, 10, 1}
 		}
