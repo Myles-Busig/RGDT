@@ -1,0 +1,167 @@
+/***
+File: Crafting
+Contributers: Myles Busig
+Last Edited: 5/24/2018
+Last Edited by: Myles Busig
+Brief: Handles crafting
+***/
+
+class Recipe
+{
+    var RecipeContents : Array[Integer] = new Array[Integer]();
+}
+
+class Crafting : ZilchComponent
+{
+    var HUDSpace : Space = null;
+    
+    var CraftingConfirmed : Boolean = false;
+    var CurrentCraftingLayout : Array[Integer] = new Array[Integer]();
+    
+    var SelectedColor : Real4 = Real4(1.0, 1.0, 1.0, 1.0);
+    var ColorAmounts : Array[Integer] = Array[Integer]();
+    
+    var TestThing1 : Recipe = new Recipe();
+    var TestThing2 : Recipe = new Recipe();
+    
+    function Initialize(init : CogInitializer)
+    {
+        this.HUDSpace = this.LevelSettings.HUDCreator.HUDSpace;
+        
+        this.CreateRecipes();
+        
+        for (var i = 0; i < 9; ++i)
+        {
+            this.ColorAmounts.Add(100);
+            
+            this.HUDSpace.FindObjectByName("CraftingAmount`i + 1`").SpriteText.VertexColor = 
+                this.HUDSpace.FindObjectByName("CraftingColor`i + 1`").Sprite.VertexColor;
+        }
+        
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        this.GetClearCraftingLayout(false);
+        
+        for (var i = 0; i < 9; ++i)
+            this.HUDSpace.FindObjectByName("CraftingAmount`i + 2`").SpriteText.Text = "`this.ColorAmounts[i]`";
+        
+        if (Zero.Keyboard.KeyIsPressed(Keys.Enter))
+            this.CraftingConfirmed = true;
+        
+        this.CheckAllRecipes();
+    }
+    
+    function GetClearCraftingLayout(clear : Boolean)
+    {
+        this.CurrentCraftingLayout.Clear();
+        
+        if (clear)
+        {
+            this.SelectedColor = this.HUDSpace.FindObjectByName("CraftingColor1").Sprite.VertexColor;
+            
+            for (var i = 0; i < 64; ++i)
+            {
+                this.HUDSpace.FindObjectByName("CraftingSlot`i + 1`").CraftingSlot.Data = 0;
+                this.HUDSpace.FindObjectByName("CraftingSlot`i + 1`").CraftingSlot.UpdateColor();
+                this.CurrentCraftingLayout.Add(0);
+            }
+        }
+        else
+        {
+            for (var i = 0; i < 64; ++i)
+                this.CurrentCraftingLayout.Add(this.HUDSpace.FindObjectByName("CraftingSlot`i + 1`").CraftingSlot.Data);
+        }
+    }
+    
+    function CreateRecipes()
+    {
+        this.TestThing1.RecipeContents = new Array[Integer]()
+        {
+        0,1,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,1,
+        0,1,0,1,0,1,0,1
+        };
+        
+        this.TestThing2.RecipeContents = new Array[Integer]()
+        {
+        1,0,1,0,1,0,1,0,
+        1,0,1,0,1,0,1,0,
+        1,0,1,0,1,0,1,0,
+        1,0,1,0,1,0,1,0,
+        1,0,1,0,1,0,1,0,
+        1,0,1,0,1,0,1,0,
+        1,0,1,0,1,0,1,0,
+        1,0,1,0,1,0,1,0
+        };
+    }
+    
+    function CheckAllRecipes()
+    {
+        if (this.CheckForRecipe("TestThing1"))
+        {
+            if (this.CraftingConfirmed)
+            {
+                this.LevelSettings.Inventory.GiveItems(1, 1);
+                this.GetClearCraftingLayout(true);
+            }
+            
+            this.HUDSpace.FindObjectByName("CraftingOutput").Sprite.VertexColor = Real4(1.0, 0.75, 0.0, 1.0);
+        }
+        else if (this.CheckForRecipe("TestThing2"))
+        {
+            if (this.CraftingConfirmed)
+            {
+                this.LevelSettings.Inventory.GiveItems(2, 1);
+                this.GetClearCraftingLayout(true);
+            }
+            
+            this.HUDSpace.FindObjectByName("CraftingOutput").Sprite.VertexColor = Real4(0.0, 1.0, 0.75, 1.0);
+        }
+        else
+            this.HUDSpace.FindObjectByName("CraftingOutput").Sprite.VertexColor = Real4(1.0, 1.0, 1.0, 1.0);
+        
+        this.CraftingConfirmed = false;
+    }
+    
+    function CheckForRecipe(itemName : String) : Boolean
+    {
+        if (itemName == "TestThing1")
+        {
+            if (this.CheckArrays(this.CurrentCraftingLayout, this.TestThing1.RecipeContents))
+                return true;
+            else
+                return false;
+        }
+        else if (itemName == "TestThing2")
+        {
+            if (this.CheckArrays(this.CurrentCraftingLayout, this.TestThing2.RecipeContents))
+                return true;
+            else
+                return false;
+        }
+        
+        return false;
+    }
+    
+    function CheckArrays(array1 : Array[Integer], array2 : Array[Integer]) : Boolean
+    {
+        if (array1.Count != array2.Count)
+            return false;
+        
+        for (var i = 0; i < array1.Count; ++ i)
+        {
+            if (array1[i] != array2[i])
+                return false;
+        }
+        
+        return true;
+    }
+}

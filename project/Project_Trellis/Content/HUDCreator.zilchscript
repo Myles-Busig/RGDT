@@ -1,0 +1,32 @@
+/***
+File: HUDCreator
+Contributers: Myles Busig
+Last Edited: 5/24/2018
+Last Edited by: Myles Busig
+Brief: Creates the HUD level
+***/
+
+class HUDCreator : ZilchComponent
+{
+    [Property] var HUDLevel : Level;
+    [Property] var SpaceArchetype : Archetype;
+    
+    var HUDSpace : Space = null;
+    
+    function Initialize(init : CogInitializer)
+    {
+        this.HUDSpace = this.GameSession.CreateNamedSpace("HUDSpace", this.SpaceArchetype);
+        
+        this.HUDSpace.LoadLevel(this.HUDLevel);
+        
+        foreach (var object in this.HUDSpace.AllObjects)
+        {
+            if (object.CraftingColor != null)
+                object.CraftingColor.OverworldSpace = this.Space;
+            else if (object.CraftingSlot != null)
+                object.CraftingSlot.OverworldSpace = this.Space;
+            else if (object.CraftingOutput != null)
+                object.CraftingOutput.OverworldSpace = this.Space;
+        }
+    }
+}

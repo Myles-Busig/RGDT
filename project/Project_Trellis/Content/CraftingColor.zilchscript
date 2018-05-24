@@ -1,0 +1,27 @@
+/***
+File: Color
+Contributers: Myles Busig
+Last Edited: 5/24/2018
+Last Edited by: Myles Busig
+Brief: One of the colors the player can use for crafting items
+***/
+
+class CraftingColor : ZilchComponent
+{
+    [Property] var Color : Real4 = Real4(1.0, 1.0, 1.0, 1.0);
+    
+    var OverworldSpace : Space = null;
+    
+    function Initialize(init : CogInitializer)
+    {
+        this.Owner.Sprite.VertexColor = this.Color;
+        this.Owner.Children.Current.SpriteText.VertexColor = this.Color;
+        
+        Zero.Connect(this.Owner, Events.LeftMouseDown, this.OnLeftMouseDown);
+    }
+    
+    function OnLeftMouseDown(event : ViewportMouseEvent)
+    {
+        this.OverworldSpace.LevelSettings.Crafting.SelectedColor = this.Color;
+    }
+}

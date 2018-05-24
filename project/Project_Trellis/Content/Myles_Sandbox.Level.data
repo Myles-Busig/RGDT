@@ -29,6 +29,17 @@ Level
 			var HighlightInterval = 10
 			var FollowEditorCamera = false
 		}
+		HUDCreator 
+		{
+			var HUDLevel = "5bab4e35fa0e0624:HUDLevel"
+			var SpaceArchetype = "576f215c0825de61:Space"
+		}
+		Crafting 
+		{
+		}
+		Inventory 
+		{
+		}
 	}
 	Cog [ContextId:2]
 	{
@@ -207,6 +218,25 @@ Level
 		{
 			var Active = true
 			var AttenuationScale = 1
+		}
+		Overworld_CameraFollower 
+		{
+			var LerpValue = 0.5
+			var Target = CogPath
+			{
+				var Path = ":/Overworld_PlayerCharacter"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var Cog = 5
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 		}
 	}
 	Cog [InheritId:"5ae542530ad0dad6:Overworld_PlayerCharacter"][ContextId:5]

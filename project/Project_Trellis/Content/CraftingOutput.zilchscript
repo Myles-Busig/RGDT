@@ -1,0 +1,26 @@
+/***
+File: CraftingOutput
+Contributers: Myles Busig
+Last Edited: 5/24/2018
+Last Edited by: Myles Busig
+Brief: This lets the Crafting script know when the player confirms thier crafting layout
+***/
+
+class CraftingOutput : ZilchComponent
+{
+    var OverworldSpace : Space = null;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Owner, Events.MouseUpdate, this.OnMouseHover);
+    }
+
+    function OnMouseHover(event : ViewportMouseEvent)
+    {
+        if (Zero.Mouse.IsButtonDown(MouseButtons.Left))
+        {
+            this.OverworldSpace.LevelSettings.Crafting.CraftingConfirmed = true;
+            Console.WriteLine("Click On Output");
+        }
+    }
+}

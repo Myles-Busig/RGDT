@@ -1,8 +1,8 @@
 /***
 File: Overworld_Player_Controller.ZilchScript
-Contributers: Jakob McFarland, 
-Last Edited: 5/18/2018
-Last Edited by: Jakob McFarland
+Contributers: Myles Busig, Jakob McFarland, 
+Last Edited: 5/24/2018
+Last Edited by: Myles Busig
 Brief: Handles player input.
 ***/
 
@@ -20,8 +20,14 @@ class Overworld_Player_Controller : ZilchComponent
     
     var Direction : Integer = 0;
     
+    var InvOpen : Boolean = false;
+    
+    var HUDSpace : Space = null;
+    
     function Initialize(init : CogInitializer)
     {
+        this.HUDSpace = this.LevelSettings.HUDCreator.HUDSpace;
+        
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
     }
 
@@ -44,5 +50,65 @@ class Overworld_Player_Controller : ZilchComponent
             this.RigidBody.Velocity += Real3(0.0, speed / 100, 0.0);
         else if (Zero.Keyboard.KeyIsDown(Keys.S))
             this.RigidBody.Velocity += Real3(0.0, -speed / 100, 0.0);
+        
+        if (Zero.Keyboard.KeyIsPressed(Keys.E))
+        {
+            if (this.InvOpen == false)
+            {
+                this.InvOpen = true;
+                
+                foreach (var child in this.HUDSpace.FindObjectByName("Crafting").Children)
+                {
+                    if (child.Sprite != null)
+                        child.Sprite.Visible = true;
+                    if (child.SpriteText != null)
+                        child.SpriteText.Visible = true;
+                    
+                    foreach (var child2 in child.Children)
+                    {
+                        if (child2.Sprite != null)
+                            child2.Sprite.Visible = true;
+                        if (child2.SpriteText != null)
+                            child2.SpriteText.Visible = true;
+                        
+                        foreach (var child3 in child2.Children)
+                        {
+                            if (child3.Sprite != null)
+                                child3.Sprite.Visible = true;
+                            if (child3.SpriteText != null)
+                                child3.SpriteText.Visible = true;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                this.InvOpen = false;
+                
+                foreach (var child in this.HUDSpace.FindObjectByName("Crafting").Children)
+                {
+                    if (child.Sprite != null)
+                        child.Sprite.Visible = false;
+                    if (child.SpriteText != null)
+                        child.SpriteText.Visible = false;
+                    
+                    foreach (var child2 in child.Children)
+                    {
+                        if (child2.Sprite != null)
+                            child2.Sprite.Visible = false;
+                        if (child2.SpriteText != null)
+                            child2.SpriteText.Visible = false;
+                        
+                        foreach (var child3 in child2.Children)
+                        {
+                            if (child3.Sprite != null)
+                                child3.Sprite.Visible = false;
+                            if (child3.SpriteText != null)
+                                child3.SpriteText.Visible = false;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
