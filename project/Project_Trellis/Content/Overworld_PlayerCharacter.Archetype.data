@@ -17,7 +17,7 @@ Cog
 		var LocalAabbCenter = Real3{0, 0, 0}
 		var LocalAabbHalfExtents = Real3{1, 1, 1}
 		var GroupSortValue = 0
-		var Material = "582c575af53d18c9:AlphaSprite"
+		var Material = "5b13f5b4c10970c8:PlayerRenderMaterial"
 		var VertexColor = Real4{1, 1, 1, 1}
 		var GeometryMode = SpriteGeometryMode.ZPlane
 		var SpriteSource = "5586f579ca73ecc2:SquareBordered"
@@ -58,8 +58,8 @@ Cog
 	}
 	Overworld_Player_Controller 
 	{
-		var Speed = 20
-		var RunMultiplier = 1.5
+		var Speed = 25
+		var RunMultiplier = 2
 	}
 	Orientation 
 	{

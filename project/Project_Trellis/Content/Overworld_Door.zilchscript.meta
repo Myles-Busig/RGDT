@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "Overworld_Door"
+		var ResourceId = 0x5b12a0c3f0d9717d
+	}
+}

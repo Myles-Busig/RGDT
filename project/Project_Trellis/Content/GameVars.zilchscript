@@ -1,0 +1,22 @@
+/***
+File: GameVars.ZilchScript
+Contributers: Jakob McFarland,
+Last Edited: 5/25/2018
+Last Edited by: Jakob McFarland
+Brief: Stores important game info.
+***/
+
+class GameVars : ZilchComponent
+{
+  function Initialize(init : CogInitializer)
+  {
+  } 
+}
+
+
+
+
+class Overworld_KeyCount
+{
+  [Static] var KeyCount : Integer;
+}

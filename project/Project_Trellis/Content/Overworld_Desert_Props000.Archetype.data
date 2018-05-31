@@ -4,7 +4,7 @@ Cog
 	var Name = "Overworld_Desert_Props000"
 	Transform 
 	{
-		var Translation = Real3{10, 11, 0}
+		var Translation = Real3{-4.25, 5.25, -1}
 		var Scale = Real3{10, 10, 1}
 		var Rotation = Quaternion{0, 0, 0, 1}
 	}
@@ -16,7 +16,7 @@ Cog
 		var OverrideBoundingBox = false
 		var LocalAabbCenter = Real3{0, 0, 0}
 		var LocalAabbHalfExtents = Real3{1, 1, 1}
-		var GroupSortValue = 0
+		var GroupSortValue = 1
 		var Material = "582c575af53d18c9:AlphaSprite"
 		var VertexColor = Real4{1, 1, 1, 1}
 		var GeometryMode = SpriteGeometryMode.ZPlane
